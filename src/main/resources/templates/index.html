@@ -1,44 +1,24 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/main_layout}">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Back to Spring</title>
-    <link rel="stylesheet" th:href="@{/libs/bootstrap/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-    <h1>Congratulations</h1>
-    <p>You completed first web application with Spring Boot</p>
-    <script th:src="@{/libs/jquery/jquery.min.js}"></script>
-    <script th:src="@{/libs/popper/popper.min.js}"></script>
-    <script th:src="@{/libs/bootstrap/js/bootstrap.min.js}"></script>
+    <div layout:fragment="content" class="container" >
+        <main role="main" class="container">
+            <div class="jumbotron">
+                <h1>Congratulations</h1>
+                <p>You completed first web application with Spring Boot</p>
+                <p th:text="${message}"></p>
+                <p th:text="${date}"></p>
+                <a class="btn btn-lg btn-primary" href="/login" role="button">Login &raquo;</a>
+                <a class="btn btn-lg btn-primary" href="/register" role="button">Register &raquo;</a>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
