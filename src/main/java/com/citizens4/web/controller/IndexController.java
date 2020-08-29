@@ -1,7 +1,12 @@
 package com.citizens4.web.controller;
 
+import java.security.Principal;
 import java.util.Date;
 
+import com.citizens4.web.model.Member;
+import com.citizens4.web.repository.MemberRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +14,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class IndexController {
-    
-    @GetMapping(value="/")
-    public String homePage(Model model) {
+
+    @Autowired
+    MemberRepository memberRepository;
+
+    @GetMapping("/")
+    public String showIndex(Model model, Principal principal, Member member){
+        if(principal == null){
+            return "views/loginForm";
+        }
         model.addAttribute("message", "Hello everyone, we are go to back to Spring with together");
         model.addAttribute("date", new Date());
+        model.addAttribute("members", memberRepository.getOne(principal.getName()));
         return "index";
     }
 
